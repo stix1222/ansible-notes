@@ -1,0 +1,17 @@
+---
+  - name: Testing loops
+    hosts: all
+    become: yes
+    #become_user: root
+    vars:
+      ansible_python_interpreter: /usr/bin/python3.6
+    tasks:
+      - name: Install Web, Cockpit, NTP
+        yum:
+          name: "{{ item }}"
+          state: present
+        loop:
+          - httpd 
+          - cockpit 
+          - chrony
+          - ntpstat
