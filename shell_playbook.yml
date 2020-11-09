@@ -1,0 +1,13 @@
+---
+  - name: Shell execution
+    hosts: all
+    vars:
+       ansible_python_interpreter: /usr/bin/python3.6
+    tasks:
+       - name: Job 1 - Get storage information
+         shell: df -h >> /tmp/storage.txt
+
+       - name: Job 2 - List home directory
+         shell: ls -lh  >> /tmp/directory.txt
+         args:
+           chdir: /home/case
