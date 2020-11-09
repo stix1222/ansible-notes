@@ -1,0 +1,12 @@
+---
+  - name: Cron manager
+    hosts: all
+    vars:
+        ansible_python_interpreter: /usr/bin/python3.6
+    tasks:
+       - name: Configure crontab
+         cron:
+            name: "List directory contents"
+            minute: "0"
+            hour: "12"
+            job: "ls -lh /tmp >> /tmp/cron.txt"
