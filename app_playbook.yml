@@ -1,0 +1,12 @@
+---
+  - name: Application Installer
+    hosts: hr
+    become: yes
+    become_user: root
+    vars:
+      ansible_python_interpreter: /usr/bin/python3.6
+    tasks:
+        - name: Install Web Services
+          yum:
+            name: httpd
+            state: absent
