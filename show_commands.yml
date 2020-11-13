@@ -1,0 +1,18 @@
+---
+- name: Cisco show commands
+  hosts: router
+  gather_facts: no
+  
+  tasks:
+  - name: 1 - Show ip interface brief
+    ios_command:
+      commands: 
+      - show ip interface brief
+      - show version
+    register: get_ip_brief
+
+  - name: 2 - Results --> show ip int brief
+    copy:
+      content: "{{ get_ip_brief.stdout }}"
+      dest: /tmp/get_ip_brief.txt
+      mode: 0640    
